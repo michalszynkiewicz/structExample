@@ -1,22 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 
-Uzupełnij rozwiązanie poniższego zadania wypełniając wykropkowane pola:
+typedef struct {
+    int n;
+    char c[500];
+} node;
 
-Dany jest zbiór par (etykieta, wartość) i liczba S.
+node nodes[100000];
 
-W zbiorze znajdź parę elementów, których wartości sumują się do S i wypisz na ekran ich etykiety.
-*/
-
-... struct {
-...
-} ...;
-
-... nodes[100000];
-
-int comparator(... o1, ... o2) {
-...
+int comparator(const void* o1, const void* o2) {
+    node* n1=(node*) o1;
+    node* n2=(node*) o2;
+    return n1->n-n2->n;
 }
 
 void findMatch(unsigned int size, int S);
@@ -27,10 +22,10 @@ int main() {
 
     scanf("%u %u", &n, &S);
     for (i = 0; i < n; ++i) {
-        scanf("%d %s", &nodes[i]..., nodes[i]...);
+        scanf("%d %s", &nodes[i].n, nodes[i].c);
     }
 
-    /* posortuj tablicę nodes rosnąco */
+    qsort(nodes,n,sizeof(node),comparator);
 
     findMatch(n, S);
 
@@ -38,13 +33,13 @@ int main() {
 }
 
 void findMatch(unsigned int size, int S) {
-    int front = 0, end = size - 1;
+    int sum, front = 0, end = size - 1;
     while (1) {
         if (front == end) {
             printf("Not found");
             return;
         }
-        sum = nodes[front]... + nodes[end]...;
+        sum = nodes[front].n + nodes[end].n;
         if (sum == S) {
             break;
         } else if (sum > S) {
@@ -53,5 +48,5 @@ void findMatch(unsigned int size, int S) {
             front ++;
         }
     }
-    printf("found match: %s, %s\n", nodes[front].name, nodes[end].name);
+    printf("found match: %s, %s\n", nodes[front].c, nodes[end].c);
 }
