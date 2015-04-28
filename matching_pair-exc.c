@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* 
+Uzupełnij rozwiązanie poniższego zadania wypełniając wykropkowane pola:
+
+Dany jest zbiór par (etykieta, wartość) i liczba S.
+
+W zbiorze znajdź parę elementów, których wartości sumują się do S i wypisz na ekran ich etykiety.
+*/
+
 ... struct {
 ...
 } ...;
@@ -22,7 +30,7 @@ int main() {
         scanf("%d %s", &nodes[i]..., nodes[i]...);
     }
 
-    // posortuj tablicę nodes rosnąco
+    /* posortuj tablicę nodes rosnąco */
 
     findMatch(n, S);
 
